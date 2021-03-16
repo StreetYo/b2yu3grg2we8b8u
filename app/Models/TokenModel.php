@@ -12,5 +12,6 @@ class TokenModel extends Model
     protected $fillable = [
         'name',
         'short_name',
+        'slug'
     ];
 }
