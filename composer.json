@@ -14,6 +14,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "php-curl-class/php-curl-class": "^8.9",
         "symfony/dom-crawler": "^5.2"
     },
     "require-dev": {
