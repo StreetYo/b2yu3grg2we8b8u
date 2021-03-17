@@ -14,4 +14,8 @@ class CoinmarketcapData extends Model
         'symbol',
         'data'
     ];
+
+    protected $casts = [
+        'data' => 'array'
+    ];
 }

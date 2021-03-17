@@ -13,4 +13,8 @@ class CoingeckoDataModel extends Model
         'symbol',
         'data'
     ];
+
+    protected $casts = [
+        'data' => 'array'
+    ];
 }
