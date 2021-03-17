@@ -18,7 +18,6 @@ class CreateTokensTable extends Migration
             $table->timestamps();
             $table->string('name')->index();
             $table->string('short_name');
-            $table->string('slug')->index();
         });
     }
 
