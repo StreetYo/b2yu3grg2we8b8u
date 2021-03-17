@@ -20,12 +20,16 @@ class CoinmarketcapDataSeeder extends Seeder
         $coins = $grabber->get_coins_list();
         $coins = $coins->data;
 
+        $insert = [];
+
         foreach ($coins as $coin) {
-            CoinmarketcapData::create([
+            $insert[] = [
                 'coinmarketcap_id' => $coin->id,
                 'symbol' => $coin->symbol,
                 'data' => json_encode($coin)
-            ]);
+            ];
         }
+
+        CoinmarketcapData::insertOrIgnore($insert);
     }
 }
