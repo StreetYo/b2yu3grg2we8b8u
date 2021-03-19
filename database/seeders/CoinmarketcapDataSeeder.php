@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\DataGrabbers\CoinmarketcapGrabber;
+use App\Facades\Json;
 use App\Models\CoinmarketcapData;
 use Illuminate\Database\Seeder;
 
@@ -23,9 +24,9 @@ class CoinmarketcapDataSeeder extends Seeder
 
         foreach ($coins as $coin) {
             $insert[] = [
-                'coinmarketcap_id' => $coin->id,
-                'symbol' => $coin->symbol,
-                'data' => json_encode($coin)
+                'coinmarketcap_id' => $coin['id'],
+                'symbol' => $coin['symbol'],
+                'data' => Json::encode($coin)
             ];
         }
 

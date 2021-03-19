@@ -4,6 +4,7 @@
 namespace App\DataGrabbers;
 
 
+use App\Facades\Json;
 use Curl\Curl;
 
 class CoingeckoGrabber
@@ -32,9 +33,9 @@ class CoingeckoGrabber
 
     private function make_get_request($endpoint, $data = []) {
         $this->curl->get($this->base_url . $endpoint, $data);
-        $response = $this->curl->getResponse();
+        $response = $this->curl->getRawResponse();
         $this->curl->reset();
 
-        return $response;
+        return Json::isJson($response) ? Json::decode($response) : [];
     }
 }

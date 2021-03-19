@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\DataGrabbers\CoingeckoGrabber;
+use App\Facades\Json;
 use App\Models\CoingeckoDataModel;
 use Illuminate\Database\Seeder;
 
@@ -22,8 +23,8 @@ class CoingeckoDataSeeder extends Seeder
 
         foreach ($coins as $coin) {
             $insert[] = [
-                'symbol' => $coin->symbol,
-                'data' => json_encode($coin),
+                'symbol' => $coin['symbol'],
+                'data' => Json::encode($coin),
             ];
         }
 
