@@ -18,6 +18,8 @@ class CreateTokensTable extends Migration
             $table->timestamps();
             $table->string('name')->index();
             $table->string('symbol');
+            $table->string('twitter')->nullable()->index();
+            $table->string('github')->nullable()->index();
         });
     }
 
