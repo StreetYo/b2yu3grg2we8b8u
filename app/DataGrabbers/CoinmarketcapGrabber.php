@@ -44,7 +44,12 @@ class CoinmarketcapGrabber
     private function make_get_request($endpoint, $data = []) {
         $this->curl->setHeader('X-CMC_PRO_API_KEY', $this->api_key);
         $this->curl->get($this->base_url . $endpoint, $data);
-        $response = $this->curl->getResponse();
+        $response = $this->curl->getRawResponse();
+        $response = json_decode($response, true);
+
+        if(key_exists('data', $response))
+            $response = $response['data'];
+
         $this->curl->reset();
 
         return $response;

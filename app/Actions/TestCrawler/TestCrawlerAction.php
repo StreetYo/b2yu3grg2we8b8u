@@ -5,7 +5,6 @@ namespace App\Actions\TestCrawler;
 
 
 use App\Actions\Runnable;
-use App\DataGrabbers\CoingeckoGrabber;
 
 class TestCrawlerAction implements Runnable
 {
@@ -18,9 +17,7 @@ class TestCrawlerAction implements Runnable
 
     public function run()
     {
-        $grabber = new CoingeckoGrabber();
 
-        dd($grabber->get_coins_list());
     }
 
 }
