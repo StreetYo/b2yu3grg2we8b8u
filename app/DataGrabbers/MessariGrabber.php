@@ -27,17 +27,6 @@ class MessariGrabber
         ]);
     }
 
-    public function get_all_coins_list() {
-        $page = 1;
-        $list = [];
-
-        while ($new_list = $this->get_all_coins_list($page)) {
-            array_push($list, ...$new_list);
-        }
-
-        return $list;
-    }
-
     private function make_get_request($endpoint, $data = []) {
         $this->curl->get($this->base_url . $endpoint, $data);
         $response = $this->curl->getRawResponse();
