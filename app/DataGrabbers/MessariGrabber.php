@@ -5,7 +5,6 @@ namespace App\DataGrabbers;
 
 
 use App\Facades\Json;
-use App\Models\MessariDataModel;
 use Curl\Curl;
 
 class MessariGrabber
