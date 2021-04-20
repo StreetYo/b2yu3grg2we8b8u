@@ -18,3 +18,7 @@ Route::get('/', [\App\Http\Controllers\TestCrawlerController::class, 'index']);
 Route::resource('token', App\Http\Controllers\TokenController::class, [
     'only' => ['index', 'show']
 ]);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

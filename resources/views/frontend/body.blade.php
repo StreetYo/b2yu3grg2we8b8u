@@ -5,6 +5,8 @@
 
 @section('body')
     @yield('header')
-    @yield('content')
+    <div class="min-h-screen">
+        @yield('content')
+    </div>
     @yield('footer')
 @endsection
