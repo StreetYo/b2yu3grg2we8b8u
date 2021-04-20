@@ -14,3 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\TestCrawlerController::class, 'index']);
+
+Route::resource('token', App\Http\Controllers\TokenController::class, [
+    'only' => ['index', 'show']
+]);

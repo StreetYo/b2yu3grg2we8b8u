@@ -17,7 +17,7 @@ class TestCrawlerAction implements Runnable
 
     public function run()
     {
-
+//        dd(count((new MessariGrabber)->get_all_coins_list()));
     }
 
 }
