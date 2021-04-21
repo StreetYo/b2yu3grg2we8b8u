@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Frontend\Token\GetPaginatedTokensAction;
 use App\Actions\Frontend\Token\ShowSingleTokenDTO;
 use App\Actions\Frontend\Token\ShowSingleTokenPageAction;
 use App\Models\TokenModel;
@@ -14,9 +15,14 @@ class TokenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $currentPage = $request->get('page', 1);
+        $tokens = (new GetPaginatedTokensAction($currentPage, 12))->run();
+
+        return view('frontend.token.index', [
+            'tokens' => $tokens
+        ]);
     }
 
     /**
