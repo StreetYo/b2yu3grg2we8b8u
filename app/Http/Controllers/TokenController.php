@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Frontend\Token\GetPaginatedTokensAction;
-use App\Actions\Frontend\Token\ShowSingleTokenDTO;
-use App\Actions\Frontend\Token\ShowSingleTokenPageAction;
-use App\Models\TokenModel;
+use App\Actions\Frontend\Token\GetTokenSinglePageDataAction;
 use Illuminate\Http\Request;
 
 class TokenController extends Controller
@@ -54,12 +52,8 @@ class TokenController extends Controller
      */
     public function show($token_slug)
     {
-        $token = TokenModel::where('symbol', $token_slug)->firstOrFail();
-
-        $dto = ShowSingleTokenDTO::makeFromArray(['token' => $token]);
-
-        $action = new ShowSingleTokenPageAction($dto);
-        return $action->run();
+        $data = (new GetTokenSinglePageDataAction($token_slug))->run();
+        return view('frontend.token.show', $data);
     }
 
     /**
