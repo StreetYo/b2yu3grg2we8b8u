@@ -4,6 +4,7 @@
 namespace App\Actions\TestCrawler;
 
 
+use App\Actions\Frontend\Token\SearchTokenAction;
 use App\Actions\Runnable;
 
 class TestCrawlerAction implements Runnable
@@ -17,7 +18,8 @@ class TestCrawlerAction implements Runnable
 
     public function run()
     {
-//        dd(count((new MessariGrabber)->get_all_coins_list()));
+        $tokens = (new SearchTokenAction('btc'))->run();
+        dd($tokens);
     }
 
 }

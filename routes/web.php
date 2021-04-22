@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\TestCrawlerController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
 Route::resource('tokens', App\Http\Controllers\TokenController::class, [
     'only' => ['index', 'show']
