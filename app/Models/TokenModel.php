@@ -17,6 +17,10 @@ class TokenModel extends Model
         'symbol'
     ];
 
+    public function image() {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
     public function searchableAs()
     {
         return 'tokens_index';

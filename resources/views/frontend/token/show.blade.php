@@ -6,7 +6,9 @@
             <div class="lg:w-4/6 mx-auto">
                 <div class="flex flex-col sm:flex-row mt-10">
                     <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-                        <img alt="team" class="w-30 h-30 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400" src="https://dummyimage.com/100x100">
+                        @isset($token->image->url)
+                            <img alt="team" class="w-30 h-30 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400" src="{{ $token->image->url }}">
+                        @endisset
                         <div class="flex flex-col items-center text-center justify-center">
                             <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">{{ $token->name }} <span class="text-gray-400 text-sm">{{ $token->symbol }}</span></h2>
                             <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>

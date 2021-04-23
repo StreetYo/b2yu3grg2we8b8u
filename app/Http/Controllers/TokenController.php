@@ -18,6 +18,9 @@ class TokenController extends Controller
         $currentPage = $request->get('page', 1);
         $tokens = (new GetPaginatedTokensAction($currentPage, 12))->run();
 
+        if(!$tokens->isEmpty())
+            $tokens->load('image');
+
         return view('frontend.token.index', [
             'tokens' => $tokens
         ]);

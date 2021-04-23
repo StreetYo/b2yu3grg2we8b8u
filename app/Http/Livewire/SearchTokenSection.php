@@ -13,6 +13,9 @@ class SearchTokenSection extends Component
     {
         $tokens = (new SearchTokenAction($this->searchText, 9))->run();
 
+        if(!$tokens->isEmpty())
+            $tokens->load('image');
+
         return view('livewire.search-token-section', [
             'tokens' => $tokens
         ]);
