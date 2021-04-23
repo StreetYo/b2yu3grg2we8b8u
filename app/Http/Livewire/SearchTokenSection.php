@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class SearchTokenSection extends Component
 {
-    public $searchText = 'btc';
+    public $searchText = '';
 
     public function render()
     {
