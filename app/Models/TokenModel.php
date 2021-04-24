@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Imageable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
 class TokenModel extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory, Searchable, Imageable;
 
     protected $table = 'tokens';
 
@@ -17,8 +18,12 @@ class TokenModel extends Model
         'symbol'
     ];
 
-    public function image() {
-        return $this->morphOne(Image::class, 'imageable');
+    public function individualInvestors() {
+        return $this->morphedByMany(IndividualInvestor::class, 'tokenable');
+    }
+
+    public function organizationInvestors() {
+        return $this->morphedByMany(OrganizationInvestor::class, 'tokenable');
     }
 
     public function searchableAs()
