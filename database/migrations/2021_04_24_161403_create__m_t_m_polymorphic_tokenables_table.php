@@ -14,7 +14,8 @@ class CreateMTMPolymorphicTokenablesTable extends Migration
     public function up()
     {
         Schema::create('tokenables', function (Blueprint $table) {
-            $table->id('token_model_id');
+            $table->id();
+            $table->bigInteger('token_model_id')->index();
             $table->bigInteger('tokenable_id')->index();
             $table->string('tokenable_type', 200)->index();
             $table->timestamps();

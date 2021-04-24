@@ -18,9 +18,9 @@ class CreateIndividualInvestorsTable extends Migration
             $table->timestamps();
             $table->string('first_name', 15);
             $table->string('last_name', 15);
-            $table->string('title', 100);
-            $table->string('slug', 100)->index();
-            $table->text('description');
+            $table->string('title', 100)->nullable();
+            $table->string('slug', 100)->unique();
+            $table->text('description')->nullable();
         });
     }
 

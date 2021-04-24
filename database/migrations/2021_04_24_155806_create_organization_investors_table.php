@@ -17,8 +17,8 @@ class CreateOrganizationInvestorsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 100);
-            $table->string('slug', 100)->index();
-            $table->text('description');
+            $table->string('slug', 100)->unique();
+            $table->text('description')->nullable();
         });
     }
 
