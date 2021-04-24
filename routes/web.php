@@ -19,6 +19,6 @@ Route::resource('tokens', App\Http\Controllers\TokenController::class, [
     'only' => ['index', 'show']
 ]);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//    return view('dashboard');
+//})->name('dashboard');
