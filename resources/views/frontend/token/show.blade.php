@@ -20,6 +20,15 @@
                     </div>
                 </div>
             </div>
+            <hr>
         </div>
     </section>
+    <div class="mx-auto container">
+        <h1>Investors</h1>
+        @include('frontend.investors.organization.list', ['investors' => $token->organizationInvestors])
+    </div>
+    <div class="mx-auto container">
+        <h1>Individual investors</h1>
+        @include('frontend.investors.individual.list', ['investors' => $token->individualInvestors])
+    </div>
 @endsection
