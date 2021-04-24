@@ -19,7 +19,7 @@ class CollectDataToInvestorsSeeder extends Seeder
      */
     public function run()
     {
-        TokenModel::query()->chunkById(10, function (Collection $tokens) {
+        TokenModel::query()->chunkById(100, function (Collection $tokens) {
             $tokens->map(function (TokenModel $token) {
                 $data = DB::table('messari_data_models')->where('symbol', $token->symbol)->get([
                     'data->profile->investors as investors'
@@ -31,23 +31,23 @@ class CollectDataToInvestorsSeeder extends Seeder
                 $investors = Json::decode($data->investors);
 
                 if (isset($investors['individuals'])) {
-                    $investors = (new CreateAndReturnIndividualInvestorsAction(
+                    $individuals = (new CreateAndReturnIndividualInvestorsAction(
                         $investors['individuals']
                     ))->run();
 
                     $token
                         ->individualInvestors()
-                        ->sync($investors->pluck('id'));
+                        ->sync($individuals->pluck('id'));
                 }
 
                 if (isset($investors['organizations'])) {
-                    $investors = (new CreateAndReturnOrganizationInvestorsAction(
+                    $organizations = (new CreateAndReturnOrganizationInvestorsAction(
                         $investors['organizations']
                     ))->run();
 
                     $token
                         ->organizationInvestors()
-                        ->sync($investors->pluck('id'));
+                        ->sync($organizations->pluck('id'));
                 }
             });
         });
